@@ -1,10 +1,65 @@
 \section{Description of the model}
 
-	The architectural basis of the model has been originally described by \citet{Guthrie2013}. They presented a biophysically based, model of action selection that can solve the two-armed bandit task. Two parallel action selection units compose the model with inputs from distinct areas of cortex: one for solving the cognitive action selection, and the other for the motor. The nuclei included to the model are: Cortex (Cx), Striatum (Str), Subthalamus (STN), Globus pallidus (GPi) and Thalamus (Th). Each module comprises of a closed-loop positive feedback direct pathway (Cx-Str-GPi-Th-Cx) and a closed-loop negative feedback hyperdirect (Cx-STN-GPi-Th-Cx). Furthermore, it consists of one instance of the center-surround architecture of Mink (1996). The interaction between the two pathways induce action selection at the model. In order a solution of the task to be correct, the decision at  cognitive level must be available for guidance of the decision at the motor. This was implemented at striatal level. A simulated dopamine reward signal forms a type of actor-critic network, which achieves learning in the model.
+The architectural basis of the model has been originally described in
+\citet{Guthrie2013} where authors introduced a biophysical model of action
+selection that can solve a two-armed bandit task. Two parallel action selection
+patways compose the model with inputs from distinct areas of the cortex: one
+for dealing with the cognitive action selection, and the other for the motor
+one. The model includes the cortex (Cx), Thalamus (Th) and several nuclei of
+the BG: Striatum (Str), Subthalamus (STN), Globus pallidus (GPi). Each module
+is made of a closed-loop positive feedback direct pathway (Cx-Str-GPi-Th-Cx)
+and a closed-loop negative feedback hyperdirect pathway (Cx-STN-GPi-Th-Cx) and
+is based on the a the center-surround architecture of \cite{Mink:1996}. The
+interaction between these two pathways is able to induce an action selection at
+the motor level. However, the task requires first the actual selection of the
+best cue before performing the corresponding motor action. In the
+\citet{Guthrie2013} model, this is implemented at the striatal level where a
+dopamine reward signal is used to implement a simple value-based learning. The
+general architectural of the model is illustrated on figure \ref{fig:architecture}.
 
-	The general architectural diagram of the formulation is illustrated in Figure \ref{fig:architecture}. In the original model, inactivation of basal ganglia output results inability of the network to produce a decision. To overcome this problem, connections at cortical level are added. 
-	First, self-connections added to cortical nuclei. Each neuron inhibits all the others and excites itself. The idea came from the need for enhancement of the competition between neurons.
-	 With lateral competition, a single connection can emerge independently in motor and cognitive cortex. The associative competition  can ensure the selection of the proper couple. To establish this competence, connectivity 	among the different cortical parts was included. In contrast with the previous model the cross talking between the two parallel modules happened only through basal ganglia. Thus, inactivation of GPi automatically meant loss of this ability. 
-	Yet,  Guthrie model did not provide time to cognitive cortex for making a decision, before motor  decides the appropriate move. They are a lot of cases that the two decisions are simultaneously, even the motor before the cognitive, at some cases. In order to obtain this difference in timing, except the added connections, a part of the original parameters have changed. 
-	
-	One of the results from experiments by \citet{Piron2015}, was the success of monkeys to reserve their knowledge after inactivation of GPi. This is a strong indication for storage of information outside of basal ganglia. It's known that striatal learning follows the rules of reinforcement learning. Each time BG computes the expected reward of an action and adjusts the weights according to the error of the real one. In the opposite side is the cortical learning about which our knowledge is limited. We hypothesized that learning occurs after every move without the need of any computation or outcome. Therefore, hebbian learning is a good candidate. The success of this choice is ensured by the participation of BG to the action selection. After few trials, BG learn the best option and guide cortex to choose it. In this way, the number of choice of the cues are capable, through the statistics, to drive cortex to learn properly. This is also confirmed by the absence of GPi, when cortex is incapable to learn new strategies. At that point, choices are statistically random, so the learning is balanced between the two cues. 
+However, in the original model, the inactivation of basal ganglia output (GPi)
+results in the inability of the model to make a decision because there is no
+competiting mechanism at the cortical level. We thus added lateral connections
+in each cortical modules (self-excitation and surround inhbition) such that a
+unique cognitive and motor decision can be made. However, at this stage, there
+is no guarantee that the motor decision corresponds to the cognitive ones. The
+model can choose cue A but moves toward location of cue B. To overcome this
+problem, we also need to establish a cross-talking between the different
+cortical modules, independently of BG pathways. This has been made using
+excitatory connections from and to the associative cortical module. With proper
+learning, this allow the cortex to make a consistent decision in the absence of
+GPi, even if it does not guarantee to make the optimal decision.
+
+One important property of the cortical decision is that it is significantly
+slower than the BG decision. This can be shown by measuring the time of motor
+decision, which has been defined at the time where the difference between the
+two most activated units in the motor cortex is greater than a given threshold
+(40Hz). Before learning, the BG decision time (GPi is intact) is around 250ms
+while the cortical decision time (GPi is disabled) is around 800 ms. This
+difference in timing is actually critical for the BG to teach the cortex as
+explained in the results section.
+
+
+%% module. Consequently, inactivation of the GPi automatically means the loss of this
+%% ability.  Yet, Guthrie model did not provide time to cognitive cortex for
+%% making a decision, before motor decides the appropriate move. They are a lot of
+%% cases that the two decisions are simultaneously, even the motor before the
+%% cognitive, at some cases. In order to obtain this difference in timing, except
+%% the added connections, a part of the original parameters have changed.
+
+
+%% One of the results from experiments by \citet{Piron2015}, was the success of
+%% monkeys to reserve their knowledge after inactivation of GPi. This is a strong
+%% indication for storage of information outside of basal ganglia. It's known that
+%% striatal learning follows the rules of reinforcement learning. Each time BG
+%% computes the expected reward of an action and adjusts the weights according to
+%% the error of the real one. In the opposite side is the cortical learning about
+%% which our knowledge is limited. We hypothesized that learning occurs after
+%% every move without the need of any computation or outcome. Therefore, hebbian
+%% learning is a good candidate. The success of this choice is ensured by the
+%% participation of BG to the action selection. After few trials, BG learn the
+%% best option and guide cortex to choose it. In this way, the number of choice of
+%% the cues are capable, through the statistics, to drive cortex to learn
+%% properly. This is also confirmed by the absence of GPi, when cortex is
+%% incapable to learn new strategies. At that point, choices are statistically
+%% random, so the learning is balanced between the two cues.
