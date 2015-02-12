@@ -4,7 +4,14 @@
 
 \begin{figure}[h]
   \centering \includegraphics[width=0.5\textwidth]{architecture}
-  \caption{Architecture of the model}
+  \caption{Architecture of the model: Display of the connections
+  					among the nuclei through the direct pathway
+  					(Cortex-Striatum-GPi-Thalamus-Cortex) and
+  					hyperdirect (Cortex-Striatum-GPi-Thalamus-Cortex).
+  					Learning occurs in two levels: hebbian learning
+  					 at the cortical through connections (1) and 
+  					 reinforcement learning at striatal through connections 
+  					 (3).}
   \label{fig:architecture}
 \end{figure}
 
@@ -12,19 +19,33 @@
 
 \begin{figure}[h]
         \centering
-        \begin{subfigure}[b]{0.3\textwidth}
+        \begin{subfigure}[b]{0.4\textwidth}
                 \includegraphics[width=\textwidth]{RTresults}
-                \caption{RTresults of the model}
+                
+        		  \vspace{2mm}
+                \caption{Reaction time of the model}
                 \label{fig:RTresults}
         \end{subfigure}
-        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
-          %(or a blank line to force the subfigure onto a new line)
-          
-        \begin{subfigure}[b]{0.5\textwidth}
+        \vspace{4mm}
+        
+        \begin{subfigure}[b]{0.9\textwidth}
                 \includegraphics[width=\textwidth]{Performances}
+        		  \vspace{2mm}
                 \caption{Performances of the model}
                 \label{fig:Performances}
         \end{subfigure}
-        \caption{Results of the model}\label{fig:Results}
+        \vspace{4mm}
+        \caption{Results of the model: 
+        					\ref{fig:RTresults}) Analysis of the data showed that
+        					 reaction time is higher in NC as compared to HC 
+        					 with active and inactive GPi. The later increases
+        					 significantly the reaction time in both conditions.
+        					 \ref{fig:Performances}) In HC, the choice of the
+        					 optimal target is made always with and without
+        					 GPi. This is not the case in NC. With active GPi, the
+        					 choice at the beginning is random, but finally there 
+        					 is expression of preference to the optimal target. 
+        					 Contrary, the choice continues to be random for the
+        					 case of inactive GPi.}
 \end{figure}
 
