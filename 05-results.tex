@@ -1,33 +1,52 @@
 \section{Results}
+We tested the model using 4 different paradigms:
+\begin{itemize}
+\item HC/GPi:   Habitual condition using already learned stimuli with intact GPi.
+\item HC/NoGPi: Habitual condition using already learned stimuli with lesioned GPi.
+\item NC/GPi:   Novel condition using non familiar stimuli with intact GPi.
+\item NC/NoGPi: Novel condition using non familiar stimuli with lesioned GPi.
+\end{itemize}
+Each condition has been tested for 250 experiments where each experiment
+consists in 120 consecutive trials (presentation of the cues, decision,
+potential reward and reset). Before starting an new experiment, the model is
+trained on the familiar stimuli until the performance is over 0.95. We measured
+performances as the ratio of optimal choices compared to the number of
+trials. Response time has been recorded as the time of the motor decision, that
+is, when the difference between two greatest motor activation is greater than
+the decision threshold (40Hz). This time is relative to the stimulus onset
+(t=500ms).
 
-Following the protocol of experiments by \citet{Piron2015}, we
-performed 250 simulations of 480 trials each. In Habitual Condition 
-(HC), the two targets presented to the model are the ones with which 
-the system was trained. In Novelty Condition (NC), the targets 
-presented are new. The first 120 trials were dedicated in normal 
-conditions and the network was exposed to familiar cues, and 120 
-trials for unfamiliar. Then, we inactivated GPi, and tested the system to the two cases with same amount of trials. As optimum trial is defined the number of trials in which the model chose the target associated to the best utility, normalized by the number of trials. Further, the reaction time of the network is the time needed a move to occur from the presentation of the cues.
-       
-Our results are in accordance with the experiments in monkeys.
-When all units of the model were participating in the choice 
-in HC, the proportion of optimum trials was  
-$100.00\pm 0.0\%$ (Figure \ref{fig:Performances}). In NC, 
-the choice was random at the beginning of training 
-($52.5 \pm 0.0013\%$, Figure \ref{fig:Performances}) to finally 
-express a preference for the optimum target ( $93.0 \pm 0.0\%$, 
-Figure \ref{fig:Performances}). In the second condition, the mean 
-reaction time is significantly higher than in the first (respectively  
-$190.8 \pm 27.71ms$ and $143.26 \pm 0.616ms$, Figure
-\ref{fig:RTresults}).
+Our results are in accordance with the experiments in monkeys. In the habitual
+condition, performances are optimal with or without lesion, indicating the
+cortex is able to make the optimal decision without the help of the basal
+ganglia. However, in the novel condition, things are quite different. For the
+intact model, the model starts a trial at chance level, giving random
+choices. However, after a few trials (around 15), it reaches a near-optimal
+performance, indicating the model has learned the respective reward probability
+associated with each cue. For the lesioned model, the performances stay at the
+level of chance, indicating the cortex is unable to learn the task ``on its
+own''. It is to be noted that due to Hebbian learning, the lesioned model tend
+to first choose a given random cue and stick to this choice until the end of
+the experiment. If this is the right cue, the performance can reach 1 for a
+single experiment, but over the course of the 250 experiments, the mean
+performance is around 0.5.
 
-Inactivation of the GPi, does not impair habitual behaviour. The 
-ratio of optimum trials does not vary significantly ( $100.00\pm 
-0.0\%$ , Figure \ref{fig:Performances}) as compared to the 
-previous condition. On the other hand, when unknown cues were
-given, the system was not able to display any preference for any of 
-the two targets ( $50.3 \pm 0.04\%$ to  $52.6\pm 0.0004\%$,
-Figure \ref{fig:Performances}). The absence of GPi significantly 
-increased the reaction time for both cases, with familiar cues
-($416.04 \pm 0.88ms$, Figure\ref{fig:RTresults}) and unfamiliar 
-($853.76 \pm 37.22ms$, Figure\ref{fig:RTresults}) as compared to 
-the normal condition.
+
+%% When all units
+%% of the model were participating in the choice in HC, the proportion of optimum
+%% trials was $100.00\pm 0.0\%$ (Figure \ref{fig:Performances}). In NC, the choice
+%% was random at the beginning of training ($52.5 \pm 0.0013\%$, Figure
+%% \ref{fig:Performances}) to finally express a preference for the optimum target
+%% ( $93.0 \pm 0.0\%$, Figure \ref{fig:Performances}). In the second condition,
+%% the mean reaction time is significantly higher than in the first (respectively
+%% $190.8 \pm 27.71ms$ and $143.26 \pm 0.616ms$, Figure \ref{fig:RTresults}).
+
+%% Inactivation of the GPi, does not impair habitual behaviour. The ratio of
+%% optimum trials does not vary significantly ( $100.00\pm 0.0\%$ , Figure
+%% \ref{fig:Performances}) as compared to the previous condition. On the other
+%% hand, when unknown cues were given, the system was not able to display any
+%% preference for any of the two targets ( $50.3 \pm 0.04\%$ to $52.6\pm
+%% 0.0004\%$, Figure \ref{fig:Performances}). The absence of GPi significantly
+%% increased the reaction time for both cases, with familiar cues ($416.04 \pm
+%% 0.88ms$, Figure\ref{fig:RTresults}) and unfamiliar ($853.76 \pm 37.22ms$,
+%% Figure\ref{fig:RTresults}) as compared to the normal condition.

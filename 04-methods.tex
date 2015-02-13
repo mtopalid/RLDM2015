@@ -1,26 +1,26 @@
-\section{Description of the model}
+\section{Methods}
 
 The architectural basis of the model has been originally described in
-\citet{Guthrie2013} where authors introduced a biophysical model of action
+\citet{Guthrie:2013} where authors introduced a biophysical model of action
 selection that can solve a two-armed bandit task. Two parallel action selection
-patways compose the model with inputs from distinct areas of the cortex: one
+pathways compose the model with inputs from distinct areas of the cortex: one
 for dealing with the cognitive action selection, and the other for the motor
 one. The model includes the cortex (Cx), Thalamus (Th) and several nuclei of
 the BG: Striatum (Str), Subthalamus (STN), Globus pallidus (GPi). Each module
 is made of a closed-loop positive feedback direct pathway (Cx-Str-GPi-Th-Cx)
 and a closed-loop negative feedback hyperdirect pathway (Cx-STN-GPi-Th-Cx) and
-is based on the a the center-surround architecture of \cite{Mink:1996}. The
+is based on the center-surround architecture of \cite{Mink:1996}. The
 interaction between these two pathways is able to induce an action selection at
 the motor level. However, the task requires first the actual selection of the
 best cue before performing the corresponding motor action. In the
-\citet{Guthrie2013} model, this is implemented at the striatal level where a
+\citet{Guthrie:2013} model, this is implemented at the striatal level where a
 dopamine reward signal is used to implement a simple value-based learning. The
-general architectural of the model is illustrated on figure \ref{fig:architecture}.
+general architectural of the model is illustrated on Figure \ref{fig:architecture}.
 
 However, in the original model, the inactivation of basal ganglia output (GPi)
 results in the inability of the model to make a decision because there is no
-competiting mechanism at the cortical level. We thus added lateral connections
-in each cortical modules (self-excitation and surround inhbition) such that a
+competitive mechanism at the cortical level. We thus added lateral connections
+in each cortical modules (self-excitation and surround inhibition) such that a
 unique cognitive and motor decision can be made. However, at this stage, there
 is no guarantee that the motor decision corresponds to the cognitive ones. The
 model can choose cue A but moves toward location of cue B. To overcome this
